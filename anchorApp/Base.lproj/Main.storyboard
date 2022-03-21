@@ -359,16 +359,16 @@ Save and see  old routes</string>
                                 <state key="normal" backgroundImage="ok"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfi-xG-sQr">
-                                <rect key="frame" x="138" y="659" width="138" height="136"/>
+                                <rect key="frame" x="138" y="659" width="138" height="145"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button" backgroundImage="whiteCircleButton"/>
+                                <state key="normal" backgroundImage="whiteCircleButton"/>
                                 <connections>
-                                    <action selector="startButtonClicked:" destination="x4t-wp-QwS" eventType="touchUpInside" id="adD-9T-GzE"/>
+                                    <action selector="startButtonClicked:" destination="x4t-wp-QwS" eventType="touchUpInside" id="1Z5-7U-qPY"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8P-38-0Bt">
-                                <rect key="frame" x="163" y="705" width="89" height="41"/>
+                                <rect key="frame" x="187" y="702" width="69" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="20">
@@ -398,7 +398,7 @@ Save and see  old routes</string>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2486.9565217391305" y="70.982142857142847"/>
+            <point key="canvasLocation" x="2223" y="71"/>
         </scene>
         <!--Stop View Controller-->
         <scene sceneID="rc1-NC-uHj">
@@ -451,7 +451,7 @@ Save and see  old routes</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hqw-PB-1fp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3300.0000000000005" y="70.982142857142847"/>
+            <point key="canvasLocation" x="3029" y="71"/>
         </scene>
         <!--Quit View Controller-->
         <scene sceneID="X71-zA-gip">
@@ -503,7 +503,7 @@ Save and see  old routes</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q71-em-CWO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3979.7101449275365" y="70.982142857142847"/>
+            <point key="canvasLocation" x="3810" y="71"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NRB-ba-BLh">
@@ -521,7 +521,7 @@ Save and see  old routes</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9oW-fr-YKF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1673.913043478261" y="70.982142857142847"/>
+            <point key="canvasLocation" x="1401" y="71"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
