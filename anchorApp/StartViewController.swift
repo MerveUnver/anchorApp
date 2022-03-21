@@ -6,6 +6,7 @@ import CoreData
 
 class StartViewController:UIViewController,CLLocationManagerDelegate{
     
+    @IBOutlet var regionButton: UIButton!
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var radiusLabel: UILabel!
     let locationManager = CLLocationManager()
@@ -16,7 +17,7 @@ class StartViewController:UIViewController,CLLocationManagerDelegate{
     {
         showUserLocation()
         addCustomPin()
-        makeRegion()
+       
     }
     
     func showUserLocation()
@@ -74,6 +75,11 @@ class StartViewController:UIViewController,CLLocationManagerDelegate{
         saveData()
     }
     
+    @IBAction func regionButton(_ sender: Any) {
+        makeRegion()
+        regionButton.isHidden = true
+        regionButton.isEnabled = false
+    }
     func saveData(){
         do{
             try self.context.save()
@@ -124,7 +130,7 @@ class StartViewController:UIViewController,CLLocationManagerDelegate{
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let circleOverlay = overlay as? MKCircle else { return MKOverlayRenderer() }
         let circleRenderer = MKCircleRenderer(circle: circleOverlay)
-        circleRenderer.strokeColor = .red
+        circleRenderer.strokeColor = .init(named: "navyBlue")
         circleRenderer.fillColor = .blue
         circleRenderer.alpha = 0.5
         return circleRenderer

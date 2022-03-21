@@ -379,6 +379,18 @@ Save and see  old routes</string>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hN1-PQ-B4U">
+                                <rect key="frame" x="138" y="361" width="132" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" image="circle.inset.filled" catalog="system" title="Add Region">
+                                    <color key="baseForegroundColor" name="navyBlue"/>
+                                    <color key="baseBackgroundColor" name="orange"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="regionButton:" destination="x4t-wp-QwS" eventType="touchUpInside" id="BR1-XP-UBX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mdx-KJ-ZSG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -387,6 +399,7 @@ Save and see  old routes</string>
                     <connections>
                         <outlet property="mapView" destination="PfV-Ro-i64" id="4fi-ox-IQK"/>
                         <outlet property="radiusLabel" destination="C8P-38-0Bt" id="YV0-nR-xxU"/>
+                        <outlet property="regionButton" destination="hN1-PQ-B4U" id="UZw-HP-AsG"/>
                         <segue destination="7SX-gA-KBQ" kind="show" id="vhy-Se-MVr"/>
                     </connections>
                 </viewController>
@@ -398,7 +411,7 @@ Save and see  old routes</string>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2223" y="71"/>
+            <point key="canvasLocation" x="2221.739130434783" y="70.982142857142847"/>
         </scene>
         <!--Stop View Controller-->
         <scene sceneID="rc1-NC-uHj">
@@ -533,6 +546,7 @@ Save and see  old routes</string>
         <image name="blueButton" width="39.333332061767578" height="15.666666984558105"/>
         <image name="button" width="62.666667938232422" height="24.666666030883789"/>
         <image name="circle" width="220" height="220"/>
+        <image name="circle.inset.filled" catalog="system" width="128" height="121"/>
         <image name="ok" width="9.3333330154418945" height="24"/>
         <image name="okBackround" width="68" height="98"/>
         <image name="orangeButton" width="39.333332061767578" height="15.666666984558105"/>
@@ -550,6 +564,9 @@ Save and see  old routes</string>
         </namedColor>
         <namedColor name="navyBlue">
             <color red="0.15686274509803921" green="0.25490196078431371" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="orange">
+            <color red="0.84313725490196079" green="0.5725490196078431" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
