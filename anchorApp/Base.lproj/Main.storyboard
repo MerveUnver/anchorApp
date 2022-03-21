@@ -294,7 +294,7 @@ Save and see  old routes</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="lll-R8-YWo">
-                                <rect key="frame" x="87" y="643" width="240" height="173"/>
+                                <rect key="frame" x="96" y="643" width="231" height="172"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOV-sM-2Ly">
@@ -332,6 +332,9 @@ Save and see  old routes</string>
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="minusButtonClicked:" destination="x4t-wp-QwS" eventType="touchUpInside" id="oUV-mt-lol"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pm-I9-snf">
                                 <rect key="frame" x="20" y="820" width="51" height="42"/>
@@ -340,7 +343,7 @@ Save and see  old routes</string>
                                 <buttonConfiguration key="configuration" style="plain" image="settings"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auo-CT-VLs">
-                                <rect key="frame" x="357" y="832" width="37" height="30"/>
+                                <rect key="frame" x="357" y="820" width="37" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" name="navyBlue"/>
                                 <state key="normal" title="Button"/>
@@ -352,33 +355,22 @@ Save and see  old routes</string>
                                 <rect key="frame" x="369" y="67" width="57" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYL-aM-HTw">
+                                <rect key="frame" x="138" y="656" width="144" height="146"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="STOP" backgroundImage="orangeCircleButton"/>
+                                <connections>
+                                    <segue destination="01i-Xq-u5Z" kind="show" id="N5G-Uf-WuP"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92x-dZ-erI">
                                 <rect key="frame" x="357" y="88" width="67" height="87"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" backgroundImage="ok"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfi-xG-sQr">
-                                <rect key="frame" x="138" y="659" width="138" height="145"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" backgroundImage="whiteCircleButton"/>
-                                <connections>
-                                    <action selector="startButtonClicked:" destination="x4t-wp-QwS" eventType="touchUpInside" id="1Z5-7U-qPY"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8P-38-0Bt">
-                                <rect key="frame" x="187" y="702" width="69" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="20">
-                                        <attributes>
-                                            <font key="NSFont" size="35" name="ArialMT"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hN1-PQ-B4U">
                                 <rect key="frame" x="138" y="361" width="132" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -391,6 +383,28 @@ Save and see  old routes</string>
                                     <action selector="regionButton:" destination="x4t-wp-QwS" eventType="touchUpInside" id="BR1-XP-UBX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfi-xG-sQr">
+                                <rect key="frame" x="139" y="656" width="144" height="146"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="whiteCircleButton"/>
+                                <connections>
+                                    <action selector="startButtonClicked:" destination="x4t-wp-QwS" eventType="touchUpInside" id="7ZC-VD-ohd"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8P-38-0Bt">
+                                <rect key="frame" x="193" y="700" width="52" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="20">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="35" name="ArialMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mdx-KJ-ZSG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -398,9 +412,13 @@ Save and see  old routes</string>
                     <navigationItem key="navigationItem" id="qev-BC-uSa"/>
                     <connections>
                         <outlet property="mapView" destination="PfV-Ro-i64" id="4fi-ox-IQK"/>
+                        <outlet property="minusButton" destination="4Q1-OQ-kkN" id="Ij9-J9-wJV"/>
+                        <outlet property="pencilButton" destination="auo-CT-VLs" id="csC-E4-fPL"/>
+                        <outlet property="plusButton" destination="FOV-sM-2Ly" id="HIv-ZU-um0"/>
                         <outlet property="radiusLabel" destination="C8P-38-0Bt" id="YV0-nR-xxU"/>
                         <outlet property="regionButton" destination="hN1-PQ-B4U" id="UZw-HP-AsG"/>
-                        <segue destination="7SX-gA-KBQ" kind="show" id="vhy-Se-MVr"/>
+                        <outlet property="settingsButton" destination="5Pm-I9-snf" id="afq-5g-OfE"/>
+                        <outlet property="startButton" destination="pfi-xG-sQr" id="mOb-CX-Ohh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0g9-r5-2JX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -412,59 +430,6 @@ Save and see  old routes</string>
                 </view>
             </objects>
             <point key="canvasLocation" x="2221.739130434783" y="70.982142857142847"/>
-        </scene>
-        <!--Stop View Controller-->
-        <scene sceneID="rc1-NC-uHj">
-            <objects>
-                <viewController id="7SX-gA-KBQ" customClass="StopViewController" customModule="anchorApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Tvy-CL-NgM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fn3-Be-NGm">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="whiteBackround" translatesAutoresizingMaskIntoConstraints="NO" id="7Nx-qt-I3a">
-                                <rect key="frame" x="0.0" y="597" width="414" height="265"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="D9b-MQ-BVY">
-                                <rect key="frame" x="87" y="655" width="240" height="173"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYL-aM-HTw">
-                                <rect key="frame" x="135" y="668" width="144" height="146"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="STOP" backgroundImage="orangeCircleButton"/>
-                                <connections>
-                                    <segue destination="01i-Xq-u5Z" kind="presentation" identifier="toQuit" animates="NO" modalPresentationStyle="fullScreen" id="hVP-fS-CEq"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="okBackround" translatesAutoresizingMaskIntoConstraints="NO" id="l2L-gb-7DW">
-                                <rect key="frame" x="367" y="64" width="57" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FaL-su-M0a">
-                                <rect key="frame" x="357" y="85" width="67" height="87"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" backgroundImage="ok"/>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="aa6-9C-wmZ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="dx3-1F-Q7M"/>
-                    <connections>
-                        <segue destination="01i-Xq-u5Z" kind="show" id="KgJ-SJ-hrH"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hqw-PB-1fp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3029" y="71"/>
         </scene>
         <!--Quit View Controller-->
         <scene sceneID="X71-zA-gip">
@@ -482,22 +447,6 @@ Save and see  old routes</string>
                                 <rect key="frame" x="0.0" y="597" width="414" height="265"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcQ-dj-XUY">
-                                <rect key="frame" x="121" y="665" width="172" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="save &amp; quit" backgroundImage="button">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2O-6k-ovI">
-                                <rect key="frame" x="121" y="734" width="172" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="quit" backgroundImage="button">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="okBackround" translatesAutoresizingMaskIntoConstraints="NO" id="fnq-HP-XFF">
                                 <rect key="frame" x="370" y="68" width="57" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -508,6 +457,22 @@ Save and see  old routes</string>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" backgroundImage="ok"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2O-6k-ovI">
+                                <rect key="frame" x="121" y="750" width="172" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="quit" backgroundImage="button">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcQ-dj-XUY">
+                                <rect key="frame" x="121" y="681" width="172" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="save &amp; quit" backgroundImage="button">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TH9-8D-NBI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -516,7 +481,7 @@ Save and see  old routes</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q71-em-CWO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3810" y="71"/>
+            <point key="canvasLocation" x="2962" y="71"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NRB-ba-BLh">
@@ -537,9 +502,6 @@ Save and see  old routes</string>
             <point key="canvasLocation" x="1401" y="71"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="KgJ-SJ-hrH"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.forward.fill" catalog="system" width="128" height="106"/>
         <image name="backroundCard" width="217.66667175292969" height="323"/>
@@ -560,10 +522,10 @@ Save and see  old routes</string>
             <color red="0.9137254901960784" green="0.92549019607843142" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="blue">
-            <color red="0.68235294117647061" green="0.79607843137254897" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68199998140335083" green="0.79600000381469727" blue="0.86699998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="navyBlue">
-            <color red="0.15686274509803921" green="0.25490196078431371" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.15700000524520874" green="0.25499999523162842" blue="0.46700000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="orange">
             <color red="0.84313725490196079" green="0.5725490196078431" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

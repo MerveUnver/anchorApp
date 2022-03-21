@@ -4,17 +4,24 @@ import CoreLocation
 import CoreData
 
 
-class StartViewController:UIViewController,CLLocationManagerDelegate{
+class StartViewController:UIViewController{
     
     @IBOutlet var regionButton: UIButton!
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var radiusLabel: UILabel!
-    let locationManager = CLLocationManager()
+    @IBOutlet var startButton: UIButton!
+    @IBOutlet var minusButton: UIButton!
+    @IBOutlet var plusButton: UIButton!
+    @IBOutlet var settingsButton: UIButton!
+    @IBOutlet var pencilButton: UIButton!
     
+    let locationManager = CLLocationManager()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
- 
+  
    override func viewDidLoad()
     {
+      
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in }
         showUserLocation()
         addCustomPin()
        
@@ -27,6 +34,7 @@ class StartViewController:UIViewController,CLLocationManagerDelegate{
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
+        
     }
     
     func addCustomPin()
@@ -51,7 +59,7 @@ class StartViewController:UIViewController,CLLocationManagerDelegate{
         
         let userDefaults = UserDefaults()
         let radius = userDefaults.object(forKey: "radius")
-        let region = CLCircularRegion(center: coordinate, radius: radius as! CLLocationDistance , identifier: "geofence")
+        let region = CLCircularRegion(center: coordinate, radius: radius as! CLLocationDistance, identifier: "geofence")
         mapView.removeOverlays(mapView.overlays)
         locationManager.startMonitoring(for: region)
         let circle = MKCircle(center: coordinate, radius: region.radius)
@@ -61,8 +69,9 @@ class StartViewController:UIViewController,CLLocationManagerDelegate{
         mapView.delegate = self
         
     }
-    
-    func saveLocation(){
+  
+    func saveLocation()
+    {
         let latitude = mapView.userLocation.coordinate.latitude
         let longitude = mapView.userLocation.coordinate.longitude
      
@@ -75,11 +84,7 @@ class StartViewController:UIViewController,CLLocationManagerDelegate{
         saveData()
     }
     
-    @IBAction func regionButton(_ sender: Any) {
-        makeRegion()
-        regionButton.isHidden = true
-        regionButton.isEnabled = false
-    }
+    
     func saveData(){
         do{
             try self.context.save()
@@ -87,38 +92,58 @@ class StartViewController:UIViewController,CLLocationManagerDelegate{
             print(error.localizedDescription)
         }
     }
-
-    @IBAction func startButtonClicked(_ sender: Any) {
+    
+    @IBAction func regionButton(_ sender: Any)
+    {
+        makeRegion()
+        regionButton.isHidden = true
+        regionButton.isEnabled = false
+    }
+  
+    @IBAction func startButtonClicked(_ sender: Any)
+    {
+        startButton.isEnabled = false
+        startButton.isHidden = true
+        pencilButton.isEnabled = false
+        pencilButton.isHidden = true
+        settingsButton.isEnabled = false
+        settingsButton.isHidden = true
+        plusButton.isEnabled = false
+        plusButton.isHidden = true
+        minusButton.isEnabled = false
+        minusButton.isHidden = true
+        radiusLabel.isHidden = true
         saveLocation()
+        
     }
     
-    @IBAction func plusButtonClicked(_ sender: Any) {
-      
+    @IBAction func plusButtonClicked(_ sender: Any)
+    {
+        makeRegion()
         var radiusValue = Int(radiusLabel.text!)!
         radiusValue = radiusValue+10
-      
         UserDefaults.standard.set(radiusValue, forKey: "radius")
         radiusLabel.text = String(radiusValue)
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-   
-        let userLocation:CLLocation = locations[0] as CLLocation
-        locationManager.stopUpdatingLocation()
-        let field = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-        let span = MKCoordinateSpan(latitudeDelta: 8.0, longitudeDelta: 8.0)
-        let region = MKCoordinateRegion(center: field, span: span)
-        mapView.setRegion(region, animated: true)
+    @IBAction func minusButtonClicked(_ sender: Any) {
+        makeRegion()
+        var radiusValue = Int(radiusLabel.text!)!
+        radiusValue = radiusValue-10
+        UserDefaults.standard.set(radiusValue, forKey: "radius")
+        radiusLabel.text = String(radiusValue)
     }
-    
-    func showAlert(title: String, message: String) {
+   
+    func showAlert(title: String, message: String)
+    {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
     
-    func showNotification(title: String, message: String) {
+    func showNotification(title: String, message: String)
+    {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = message
@@ -127,7 +152,8 @@ class StartViewController:UIViewController,CLLocationManagerDelegate{
         let request = UNNotificationRequest(identifier: "notif", content: content, trigger: nil)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
+    {
         guard let circleOverlay = overlay as? MKCircle else { return MKOverlayRenderer() }
         let circleRenderer = MKCircleRenderer(circle: circleOverlay)
         circleRenderer.strokeColor = .init(named: "navyBlue")
@@ -136,15 +162,38 @@ class StartViewController:UIViewController,CLLocationManagerDelegate{
         return circleRenderer
     }
 }
+
+
 extension StartViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationView")
         if annotationView == nil{
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationView")
         }
-        annotationView?.image = UIImage(named: "ship")
-        return annotationView
+           annotationView?.image = UIImage(named: "ship")
+           return annotationView
     }
     
+}
+
+extension StartViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        let userLocation:CLLocation = locations[0] as CLLocation
+        locationManager.stopUpdatingLocation()
+        let field = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 8.0, longitudeDelta: 8.0)
+        let region = MKCoordinateRegion(center: field, span: span)
+        mapView.setRegion(region, animated: true)
+    }
+ 
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion)
+    {
+        let title = "You Left the Region"
+        let message = "Say bye bye to all that cool stuff."
+        showAlert(title: title, message: message)
+        showNotification(title: title, message: message)
+    }
 }
 
