@@ -41,6 +41,7 @@ class StartViewController:UIViewController,CLLocationManagerDelegate{
         self.mapView.addAnnotation(pin)
     }
     
+    
     func makeRegion()
     {
         let latitude = mapView.userLocation.coordinate.latitude
