@@ -54,7 +54,7 @@ class StartViewController:UIViewController,CLLocationManagerDelegate{
         locationManager.startMonitoring(for: region)
         let circle = MKCircle(center: coordinate, radius: region.radius)
         mapView.addOverlay(circle)
-        //
+        
         mapView.setRegion(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: false)
         mapView.delegate = self
         
