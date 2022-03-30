@@ -5,7 +5,7 @@ import CoreData
 
 
 class StartViewController:UIViewController{
-    
+ 
     @IBOutlet var regionButton: UIButton!
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var radiusLabel: UILabel!
@@ -13,20 +13,44 @@ class StartViewController:UIViewController{
     @IBOutlet var minusButton: UIButton!
     @IBOutlet var plusButton: UIButton!
     @IBOutlet var settingsButton: UIButton!
-    @IBOutlet var pencilButton: UIButton!
+    @IBOutlet var quitButton: UIButton!
+    @IBOutlet var saveQuitButton: UIButton!
+    @IBOutlet var stopButton: UIButton!
+    @IBOutlet var circleImage: UIImageView!
+    @IBOutlet var openButton: UIButton!
+    @IBOutlet var myView: UIView!
+    @IBOutlet var closeButton: UIButton!
     
+    var showMenu = false
+    let tableView = UITableView()
     let locationManager = CLLocationManager()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-  
-   override func viewDidLoad()
+    
+   
+    override func viewDidLoad()
     {
+        saveQuitButton.isEnabled = false
+        saveQuitButton.isHidden = true
+        quitButton.isEnabled = false
+        quitButton.isHidden = true
+        stopButton.isEnabled = false
+        stopButton.isHidden = true
+        startButton.isEnabled = false
+        myView.isHidden = true
+        closeButton.isEnabled = false
+        closeButton.isHidden = true
+        
+        let radiusValue = Int(radiusLabel.text!)!
+        UserDefaults.standard.set(radiusValue, forKey: "radius")
+        radiusLabel.text = String(radiusValue)
+       
       
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in }
         showUserLocation()
         addCustomPin()
        
     }
-    
+ 
     func showUserLocation()
     {
         locationManager.delegate = self
@@ -65,7 +89,7 @@ class StartViewController:UIViewController{
         let circle = MKCircle(center: coordinate, radius: region.radius)
         mapView.addOverlay(circle)
         
-        mapView.setRegion(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: false)
+        mapView.setRegion(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)), animated: false)
         mapView.delegate = self
         
     }
@@ -96,6 +120,7 @@ class StartViewController:UIViewController{
     @IBAction func regionButton(_ sender: Any)
     {
         makeRegion()
+        startButton.isEnabled = true
         regionButton.isHidden = true
         regionButton.isEnabled = false
     }
@@ -104,8 +129,8 @@ class StartViewController:UIViewController{
     {
         startButton.isEnabled = false
         startButton.isHidden = true
-        pencilButton.isEnabled = false
-        pencilButton.isHidden = true
+        stopButton.isEnabled = true
+        stopButton.isHidden = false
         settingsButton.isEnabled = false
         settingsButton.isHidden = true
         plusButton.isEnabled = false
@@ -121,7 +146,7 @@ class StartViewController:UIViewController{
     {
         makeRegion()
         var radiusValue = Int(radiusLabel.text!)!
-        radiusValue = radiusValue+10
+        radiusValue = radiusValue + 1
         UserDefaults.standard.set(radiusValue, forKey: "radius")
         radiusLabel.text = String(radiusValue)
     }
@@ -130,11 +155,62 @@ class StartViewController:UIViewController{
     @IBAction func minusButtonClicked(_ sender: Any) {
         makeRegion()
         var radiusValue = Int(radiusLabel.text!)!
-        radiusValue = radiusValue-10
-        UserDefaults.standard.set(radiusValue, forKey: "radius")
-        radiusLabel.text = String(radiusValue)
+        if radiusValue > 0{
+            radiusValue = radiusValue - 1
+            UserDefaults.standard.set(radiusValue, forKey: "radius")
+            radiusLabel.text = String(radiusValue)
+        }
+       
     }
    
+    @IBAction func stopButtonClicked(_ sender: Any) {
+        stopButton.isEnabled = false
+        stopButton.isHidden = true
+        saveQuitButton.isEnabled = true
+        saveQuitButton.isHidden = false
+        quitButton.isEnabled = true
+        quitButton.isHidden = false
+        circleImage.isHidden = true
+    }
+    @IBAction func saveQuitButtonClicked(_ sender: Any) {
+    }
+    
+    
+    @IBAction func quitButtonClicked(_ sender: Any) {
+    }
+    
+    
+    @IBAction func openButtonClicked(_ sender: Any) {
+        
+        if (showMenu){
+            
+            openButton.isEnabled = false
+            openButton.isHidden = true
+            closeButton.isEnabled = true
+            closeButton.isHidden = false
+            
+            myView.isHidden = false
+            
+        }
+      showMenu = !showMenu
+       
+    }
+
+    @IBAction func closeButtonClicked(_ sender: Any) {
+        
+        if (showMenu){
+            closeButton.isEnabled = false
+            closeButton.isHidden = true
+            openButton.isEnabled = true
+            openButton.isHidden = false
+            myView.isHidden = true
+        
+        }
+      showMenu = !showMenu
+     
+    }
+   
+    
     func showAlert(title: String, message: String)
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
