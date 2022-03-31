@@ -284,6 +284,10 @@ Save and see  old routes</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PfV-Ro-i64">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <gestureRecognizers/>
+                            </mapView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="whiteBackround" translatesAutoresizingMaskIntoConstraints="NO" id="2V3-Hq-qRT">
                                 <rect key="frame" x="0.0" y="597" width="414" height="265"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -403,19 +407,19 @@ Save and see  old routes</string>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="settings"/>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dpW-QA-Swg">
-                                <rect key="frame" x="0.0" y="130" width="115" height="108"/>
+                            <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dpW-QA-Swg">
+                                <rect key="frame" x="0.0" y="130" width="132" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="knot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9u-2X-o6Y">
-                                        <rect key="frame" x="61" y="39" width="44" height="36"/>
+                                        <rect key="frame" x="61" y="39" width="71" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iby-3q-SQV">
-                                        <rect key="frame" x="61" y="10" width="54" height="31"/>
+                                        <rect key="frame" x="61" y="10" width="126" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -426,13 +430,8 @@ Save and see  old routes</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="speedometer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ry0-Gt-bpF">
-                                        <rect key="frame" x="8" y="44" width="37" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wind" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JbE-6U-9fx">
-                                        <rect key="frame" x="8" y="78" width="45" height="26"/>
+                                        <rect key="frame" x="8" y="45" width="45" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
@@ -443,8 +442,17 @@ Save and see  old routes</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="location.north" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ry0-Gt-bpF">
+                                        <rect key="frame" x="8" y="76" width="37" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="brown"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.5" height="1"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4Y-ki-EzW">
                                 <rect key="frame" x="-7" y="56" width="56" height="86"/>
@@ -464,10 +472,6 @@ Save and see  old routes</string>
                                     <action selector="openButtonClicked:" destination="x4t-wp-QwS" eventType="touchUpInside" id="FQt-YM-Hfl"/>
                                 </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PfV-Ro-i64">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <gestureRecognizers/>
-                            </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mdx-KJ-ZSG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -482,6 +486,7 @@ Save and see  old routes</string>
                     <connections>
                         <outlet property="circleImage" destination="lll-R8-YWo" id="ymT-jh-Q1h"/>
                         <outlet property="closeButton" destination="o4Y-ki-EzW" id="hWA-Ta-WAc"/>
+                        <outlet property="directionLabel" destination="wgO-yt-vVu" id="wIn-oU-JxX"/>
                         <outlet property="mapView" destination="PfV-Ro-i64" id="4fi-ox-IQK"/>
                         <outlet property="minusButton" destination="4Q1-OQ-kkN" id="Ij9-J9-wJV"/>
                         <outlet property="myView" destination="dpW-QA-Swg" id="dGn-Ng-5Wg"/>
@@ -492,8 +497,10 @@ Save and see  old routes</string>
                         <outlet property="regionButton" destination="hN1-PQ-B4U" id="UZw-HP-AsG"/>
                         <outlet property="saveQuitButton" destination="tcQ-dj-XUY" id="HUe-XS-Ww7"/>
                         <outlet property="settingsButton" destination="5Pm-I9-snf" id="afq-5g-OfE"/>
+                        <outlet property="speedLabel" destination="v9u-2X-o6Y" id="LLF-Xb-98e"/>
                         <outlet property="startButton" destination="pfi-xG-sQr" id="mOb-CX-Ohh"/>
                         <outlet property="stopButton" destination="IYL-aM-HTw" id="Ky4-aC-0x0"/>
+                        <outlet property="tempLabel" destination="iby-3q-SQV" id="UJm-vj-N0G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0g9-r5-2JX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -533,12 +540,12 @@ Save and see  old routes</string>
         <image name="circle" width="220" height="220"/>
         <image name="circle.inset.filled" catalog="system" width="128" height="121"/>
         <image name="close" width="28" height="72"/>
+        <image name="location.north" catalog="system" width="108" height="128"/>
         <image name="open" width="28" height="72"/>
         <image name="orangeButton" width="39.333332061767578" height="15.666666984558105"/>
         <image name="orangeCircleButton" width="60" height="60"/>
         <image name="purchaseButtonBackround" width="43.666667938232422" height="52.666667938232422"/>
         <image name="settings" width="27" height="27.333333969116211"/>
-        <image name="speedometer" catalog="system" width="128" height="121"/>
         <image name="thermometer" catalog="system" width="81" height="128"/>
         <image name="whiteBackround" width="638" height="514"/>
         <image name="whiteCircleButton" width="60" height="60"/>

@@ -21,6 +21,10 @@ class StartViewController:UIViewController{
     @IBOutlet var myView: UIView!
     @IBOutlet var closeButton: UIButton!
     
+    @IBOutlet var directionLabel: UILabel!
+    @IBOutlet var speedLabel: UILabel!
+    @IBOutlet var tempLabel: UILabel!
+    
     var showMenu = false
     let tableView = UITableView()
     let locationManager = CLLocationManager()
@@ -48,6 +52,8 @@ class StartViewController:UIViewController{
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in }
         showUserLocation()
         addCustomPin()
+        
+        getWeatherData()
        
     }
  
@@ -193,10 +199,86 @@ class StartViewController:UIViewController{
             
         }
       showMenu = !showMenu
-       
+   
+        getWeatherData()
     }
+    
+    func getWeatherData(){
+        let latitude = mapView.userLocation.coordinate.latitude
+        let longitude = mapView.userLocation.coordinate.longitude
+            
+        let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=af0b2d706c74365c3ec361454ba15cd9")
+        let session = URLSession.shared
+        let task = session.dataTask(with: url!) { data, response, error in
+            if error != nil{
+                print("error")
+                
+            }else{
+                if data != nil{
+                    do{
+                        let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String:Any]
+                      
+                        DispatchQueue.main.async {
+                            if let main = jsonResponse!["main"] as? [String:Any]{
+                                if let temp = main["temp"] as? Double{
+                                    self.tempLabel.text = String(Int(temp-272.15)) + " C"
+                                }
+                                
+                            }
+                            
+                            if let wind = jsonResponse!["wind"] as? [String:Any]{
+                                if let speed = wind["speed"] as? Double{
+                                    self.speedLabel.text = String(Int(speed)) + " knot"
+                                }
+                            }
+                            
+                            if let wind = jsonResponse!["wind"] as? [String:Any]{
+                                if let deg = wind["deg"] as? Double{
+                                    var result:String
+                                    if 0<deg && deg<10{
+                                        result = "N"
+                                    }
+                                    else if 11<deg && deg<79{
+                                        result = "NE"
+                                    }
+                                    else if 80<deg && deg<100{
+                                        result = "E"
+                                    }
+                                    else if 101<deg && deg<169{
+                                        result = "SE"
+                                    }
+                                    else if 170<deg && deg<190{
+                                        result = "S"
+                                    }
+                                    else if 191<deg && deg<259{
+                                        result = "SW"
+                                    }
+                                    else if 260<deg && deg<280{
+                                        result = "W"
+                                    }
+                                    else if 281<deg && deg<349{
+                                        result = "NW"
+                                    }
+                                    else {
+                                        result = "N"
+                                    }
+                                    
+                                self.directionLabel.text = result
+                                   }
+                                    
+                                }
+                            }
+                        
+                    }catch{
+                    
+                    }
+                }
+            }
+    }
+        task.resume()
+}
 
-    @IBAction func closeButtonClicked(_ sender: Any) {
+@IBAction func closeButtonClicked(_ sender: Any) {
         
         if (showMenu){
             closeButton.isEnabled = false
