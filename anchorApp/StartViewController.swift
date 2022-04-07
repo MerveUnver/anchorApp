@@ -12,7 +12,6 @@ class StartViewController:UIViewController{
     @IBOutlet var startButton: UIButton!
     @IBOutlet var minusButton: UIButton!
     @IBOutlet var plusButton: UIButton!
-    @IBOutlet var settingsButton: UIButton!
     @IBOutlet var quitButton: UIButton!
     @IBOutlet var saveQuitButton: UIButton!
     @IBOutlet var stopButton: UIButton!
@@ -20,16 +19,15 @@ class StartViewController:UIViewController{
     @IBOutlet var openButton: UIButton!
     @IBOutlet var myView: UIView!
     @IBOutlet var closeButton: UIButton!
-    
     @IBOutlet var directionLabel: UILabel!
     @IBOutlet var speedLabel: UILabel!
     @IBOutlet var tempLabel: UILabel!
     
-    var showMenu = false
+    
     let tableView = UITableView()
     let locationManager = CLLocationManager()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+    var showMenu = false
    
     override func viewDidLoad()
     {
@@ -43,6 +41,9 @@ class StartViewController:UIViewController{
         myView.isHidden = true
         closeButton.isEnabled = false
         closeButton.isHidden = true
+        plusButton.isEnabled = false
+        minusButton.isEnabled = false
+        
         
         let radiusValue = Int(radiusLabel.text!)!
         UserDefaults.standard.set(radiusValue, forKey: "radius")
@@ -52,8 +53,6 @@ class StartViewController:UIViewController{
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in }
         showUserLocation()
         addCustomPin()
-        
-        getWeatherData()
        
     }
  
@@ -129,6 +128,8 @@ class StartViewController:UIViewController{
         startButton.isEnabled = true
         regionButton.isHidden = true
         regionButton.isEnabled = false
+        plusButton.isEnabled = true
+        minusButton.isEnabled = true
     }
   
     @IBAction func startButtonClicked(_ sender: Any)
@@ -137,13 +138,12 @@ class StartViewController:UIViewController{
         startButton.isHidden = true
         stopButton.isEnabled = true
         stopButton.isHidden = false
-        settingsButton.isEnabled = false
-        settingsButton.isHidden = true
         plusButton.isEnabled = false
         plusButton.isHidden = true
         minusButton.isEnabled = false
         minusButton.isHidden = true
         radiusLabel.isHidden = true
+        
         saveLocation()
         
     }
@@ -187,7 +187,7 @@ class StartViewController:UIViewController{
     
     
     @IBAction func openButtonClicked(_ sender: Any) {
-        
+       
         if (showMenu){
             
             openButton.isEnabled = false
@@ -196,12 +196,26 @@ class StartViewController:UIViewController{
             closeButton.isHidden = false
             
             myView.isHidden = false
-            
+            myView.layer.cornerRadius = 10
+           
         }
-      showMenu = !showMenu
+        showMenu = !showMenu
    
         getWeatherData()
     }
+    @IBAction func closeButtonClicked(_ sender: Any) {
+            
+            if (showMenu){
+                closeButton.isEnabled = false
+                closeButton.isHidden = true
+                openButton.isEnabled = true
+                openButton.isHidden = false
+                myView.isHidden = true
+                
+            }
+       
+           showMenu = !showMenu
+        }
     
     func getWeatherData(){
         let latitude = mapView.userLocation.coordinate.latitude
@@ -278,21 +292,8 @@ class StartViewController:UIViewController{
         task.resume()
 }
 
-@IBAction func closeButtonClicked(_ sender: Any) {
-        
-        if (showMenu){
-            closeButton.isEnabled = false
-            closeButton.isHidden = true
-            openButton.isEnabled = true
-            openButton.isHidden = false
-            myView.isHidden = true
-        
-        }
-      showMenu = !showMenu
-     
-    }
+
    
-    
     func showAlert(title: String, message: String)
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

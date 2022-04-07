@@ -401,14 +401,8 @@ Save and see  old routes</string>
                                     </fragment>
                                 </attributedString>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pm-I9-snf">
-                                <rect key="frame" x="0.0" y="820" width="51" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="settings"/>
-                            </button>
                             <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dpW-QA-Swg">
-                                <rect key="frame" x="0.0" y="130" width="132" height="108"/>
+                                <rect key="frame" x="-11" y="130" width="132" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="knot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9u-2X-o6Y">
@@ -448,7 +442,7 @@ Save and see  old routes</string>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" name="brown"/>
+                                <color key="backgroundColor" name="beige"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
@@ -496,7 +490,6 @@ Save and see  old routes</string>
                         <outlet property="radiusLabel" destination="C8P-38-0Bt" id="YV0-nR-xxU"/>
                         <outlet property="regionButton" destination="hN1-PQ-B4U" id="UZw-HP-AsG"/>
                         <outlet property="saveQuitButton" destination="tcQ-dj-XUY" id="HUe-XS-Ww7"/>
-                        <outlet property="settingsButton" destination="5Pm-I9-snf" id="afq-5g-OfE"/>
                         <outlet property="speedLabel" destination="v9u-2X-o6Y" id="LLF-Xb-98e"/>
                         <outlet property="startButton" destination="pfi-xG-sQr" id="mOb-CX-Ohh"/>
                         <outlet property="stopButton" destination="IYL-aM-HTw" id="Ky4-aC-0x0"/>
@@ -545,7 +538,6 @@ Save and see  old routes</string>
         <image name="orangeButton" width="39.333332061767578" height="15.666666984558105"/>
         <image name="orangeCircleButton" width="60" height="60"/>
         <image name="purchaseButtonBackround" width="43.666667938232422" height="52.666667938232422"/>
-        <image name="settings" width="27" height="27.333333969116211"/>
         <image name="thermometer" catalog="system" width="81" height="128"/>
         <image name="whiteBackround" width="638" height="514"/>
         <image name="whiteCircleButton" width="60" height="60"/>
@@ -555,9 +547,6 @@ Save and see  old routes</string>
         </namedColor>
         <namedColor name="blue">
             <color red="0.68199998140335083" green="0.79600000381469727" blue="0.86699998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="brown">
-            <color red="0.76499998569488525" green="0.68599998950958252" blue="0.6589999794960022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="navyBlue">
             <color red="0.15700000524520874" green="0.25499999523162842" blue="0.46700000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
