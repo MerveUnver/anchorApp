@@ -211,11 +211,6 @@ Save and see  old routes</string>
                                         <rect key="frame" x="8" y="516" width="211" height="230"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="monthly" translatesAutoresizingMaskIntoConstraints="NO" id="T9A-Me-cd4">
-                                                <rect key="frame" x="21" y="-21" width="150" height="243"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTI-fY-9Aw">
                                                 <rect key="frame" x="33" y="125" width="126" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -227,6 +222,11 @@ Save and see  old routes</string>
                                                     <action selector="buyMountly:" destination="Sk6-AJ-LaA" eventType="touchUpInside" id="KrM-Yy-vid"/>
                                                 </connections>
                                             </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="monthly" translatesAutoresizingMaskIntoConstraints="NO" id="T9A-Me-cd4">
+                                                <rect key="frame" x="53" y="-13" width="150" height="243"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -279,14 +279,14 @@ Save and see  old routes</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PfV-Ro-i64">
-                                <rect key="frame" x="0.0" y="44" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <gestureRecognizers/>
                             </mapView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteBackround" translatesAutoresizingMaskIntoConstraints="NO" id="2V3-Hq-qRT">
-                                <rect key="frame" x="0.0" y="587" width="414" height="265"/>
+                                <rect key="frame" x="0.0" y="597" width="414" height="265"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcQ-dj-XUY">
-                                <rect key="frame" x="121" y="655" width="172" height="61"/>
+                                <rect key="frame" x="121" y="665" width="172" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="Z3s-hR-Q87"/>
                                 </constraints>
@@ -299,7 +299,7 @@ Save and see  old routes</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2O-6k-ovI">
-                                <rect key="frame" x="121" y="724" width="172" height="61"/>
+                                <rect key="frame" x="121" y="734" width="172" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="EOp-sx-hxi"/>
                                 </constraints>
@@ -333,7 +333,7 @@ Save and see  old routes</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Q1-OQ-kkN">
-                                <rect key="frame" x="113" y="688.5" width="38" height="62"/>
+                                <rect key="frame" x="113" y="698.5" width="38" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="38" id="R9r-Sh-eJZ"/>
                                 </constraints>
@@ -372,7 +372,7 @@ Save and see  old routes</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8P-38-0Bt">
-                                <rect key="frame" x="181" y="690" width="52" height="59"/>
+                                <rect key="frame" x="181" y="700" width="52" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="g94-kd-3lM"/>
                                 </constraints>
@@ -387,42 +387,42 @@ Save and see  old routes</string>
                                 </attributedString>
                             </label>
                             <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpW-QA-Swg">
-                                <rect key="frame" x="-11" y="130" width="132" height="98"/>
+                                <rect key="frame" x="-11" y="130" width="132" height="108"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="knot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9u-2X-o6Y">
-                                        <rect key="frame" x="61" y="39" width="71" height="26"/>
+                                        <rect key="frame" x="61" y="39" width="71" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iby-3q-SQV">
-                                        <rect key="frame" x="61" y="10" width="44" height="26"/>
+                                        <rect key="frame" x="61" y="10" width="44" height="31"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thermometer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NLS-zq-zfT">
-                                        <rect key="frame" x="8" y="12" width="37" height="23.5"/>
+                                        <rect key="frame" x="8" y="12" width="37" height="28.5"/>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="37" id="1Yg-bQ-4x6"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wind" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JbE-6U-9fx">
-                                        <rect key="frame" x="8" y="39.5" width="45" height="26"/>
+                                        <rect key="frame" x="8" y="44.5" width="45" height="26"/>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="Lho-tO-EZc"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgO-yt-vVu">
-                                        <rect key="frame" x="61" y="67" width="44" height="31"/>
+                                        <rect key="frame" x="61" y="72" width="44" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.north" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ry0-Gt-bpF">
-                                        <rect key="frame" x="8" y="70.5" width="37" height="19.5"/>
+                                        <rect key="frame" x="8" y="75.5" width="37" height="24.5"/>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
