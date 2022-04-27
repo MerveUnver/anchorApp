@@ -1,0 +1,91 @@
+{
+  "identifier" : "44782D0F",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "17311397",
+      "localizations" : [
+
+      ],
+      "name" : "monthly",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "232FB9B3",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unlimited Monthly $0.99",
+              "displayName" : "MonthlySubcription",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.merveunver.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly",
+          "subscriptionGroupID" : "17311397",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    },
+    {
+      "id" : "061C1F51",
+      "localizations" : [
+
+      ],
+      "name" : "Yearly",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "5.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "FB322C1A",
+          "introductoryOffer" : {
+            "displayPrice" : "",
+            "internalID" : "04E2BF61",
+            "paymentMode" : "payUpFront",
+            "subscriptionPeriod" : "P1Y"
+          },
+          "localizations" : [
+            {
+              "description" : "Unlimited yearly $5.99",
+              "displayName" : "YearlySubcription",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.merveunver.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Yearly",
+          "subscriptionGroupID" : "061C1F51",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 2
+  }
+}

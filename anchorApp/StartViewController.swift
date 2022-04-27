@@ -28,7 +28,17 @@ class StartViewController:UIViewController{
     let locationManager = CLLocationManager()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var showMenu = false
-   
+    var userLatitute = Double()
+    var userLongitute = Double()
+    var time = Timer()
+    var date : String = ""
+    var hour : String = ""
+    var pinDate : String = ""
+    var pinHour : String = ""
+
+    var timer : Timer?
+    var counter : Int = 1
+    
     override func viewDidLoad()
     {
         saveQuitButton.isEnabled = false
@@ -43,17 +53,66 @@ class StartViewController:UIViewController{
         closeButton.isHidden = true
         plusButton.isEnabled = false
         minusButton.isEnabled = false
-        
+        addCustomPin()
         
         let radiusValue = Int(radiusLabel.text!)!
         UserDefaults.standard.set(radiusValue, forKey: "radius")
         radiusLabel.text = String(radiusValue)
-       
+        
+        time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector("timeUpload"), userInfo: nil, repeats: true)
       
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in }
         showUserLocation()
-        addCustomPin()
+        //addCustomPin()
        
+    }
+    
+    @objc func timeUpload(){
+        let dateFormat = DateFormatter()
+        let hourFormat = DateFormatter()
+        
+        dateFormat.dateStyle = .long
+        hourFormat.dateStyle = .long
+        
+       // date = dateFormat.string(from: Date())
+       // hour = hourFormat.string(from: Date())
+    }
+    
+    func saveTime() {
+        let dateData = date
+        let hourData = hour
+     
+        let entity = NSEntityDescription.entity(forEntityName: "Time", in: context)!
+        let time = NSManagedObject(entity: entity, insertInto: context)
+        time.setValue(dateData, forKey: "date")
+        time.setValue(hourData, forKey: "hour")
+        NotificationCenter.default.post(name: NSNotification.Name("newData"), object: nil)
+        
+        saveData()
+    }
+    
+    func getTime(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Time")
+        fetchRequest.returnsObjectsAsFaults = false
+        do{
+            let results = try context.fetch(fetchRequest)
+            if results.count > 0{
+                for result in results as! [NSManagedObject]{
+                    if let date = result.value(forKey: "date") as? String {
+                        pinDate = date
+                        
+                        if let hour = result.value(forKey: "hour") as? String{
+                            pinHour = hour
+                             
+                        }
+                    }
+                }
+            }
+        }catch{
+            print("error")
+        }
     }
  
     func showUserLocation()
@@ -68,15 +127,36 @@ class StartViewController:UIViewController{
     
     func addCustomPin()
     {
-        let latitude = mapView.userLocation.coordinate.latitude
-        let longitude = mapView.userLocation.coordinate.longitude
-        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude )
-        
-        let pin = MKPointAnnotation()
-        pin.title = "You are here"
-        pin.subtitle = "Tap button to add area limit"
-        pin.coordinate = coordinate
-        self.mapView.addAnnotation(pin)
+        getTime()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserLocation")
+        fetchRequest.returnsObjectsAsFaults = false
+        do{
+            let results = try context.fetch(fetchRequest)
+            if results.count > 0{
+                for result in results as! [NSManagedObject]{
+                    if let latitude = result.value(forKey: "latitude") as? Double {
+                        userLatitute = latitude
+                        
+                        if let longitude = result.value(forKey: "longitude") as? Double{
+                            userLongitute = longitude
+                            
+                            let annotation = MKPointAnnotation()
+                            annotation.title = pinDate
+                            annotation.subtitle = "tıklandı"
+                            let coordinate = CLLocationCoordinate2D(latitude: userLatitute, longitude: userLongitute)
+                            annotation.coordinate = coordinate
+                            mapView.addAnnotation(annotation)
+                            
+                        }
+                    }
+                }
+            }
+        }catch{
+            print("error")
+        }
+       
     }
     
     
@@ -97,6 +177,23 @@ class StartViewController:UIViewController{
         mapView.setRegion(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)), animated: false)
         mapView.delegate = self
         
+    }
+    
+    func deleteRegion(){
+        let latitude = mapView.userLocation.coordinate.latitude
+        let longitude = mapView.userLocation.coordinate.longitude
+        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude )
+        
+        let userDefaults = UserDefaults()
+        let radius = userDefaults.object(forKey: "radius")
+        let region = CLCircularRegion(center: coordinate, radius: radius as! CLLocationDistance, identifier: "geofence")
+        mapView.removeOverlays(mapView.overlays)
+        locationManager.stopMonitoring(for: region)
+        let circle = MKCircle(center: coordinate, radius: 0)
+        mapView.addOverlay(circle)
+        
+        mapView.setRegion(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)), animated: false)
+        mapView.delegate = self
     }
   
     func saveLocation()
@@ -121,7 +218,38 @@ class StartViewController:UIViewController{
             print(error.localizedDescription)
         }
     }
-    
+    func goToBeginning(){
+        stopButton.isEnabled = false
+        stopButton.isHidden = true
+        saveQuitButton.isEnabled = false
+        saveQuitButton.isHidden = true
+        quitButton.isEnabled = false
+        quitButton.isHidden = true
+        circleImage.isHidden = false
+        startButton.isEnabled = true
+        startButton.isHidden = false
+        radiusLabel.isHidden = false
+        radiusLabel.text = "20"
+        plusButton.isEnabled = false
+        plusButton.isHidden = false
+        minusButton.isEnabled = false
+        minusButton.isHidden = false
+        regionButton.isEnabled = true
+        regionButton.isHidden = false
+        
+        deleteRegion()
+    }
+    func goToSaveQuit(){
+        stopButton.isEnabled = false
+        stopButton.isHidden = true
+        saveQuitButton.isEnabled = true
+        saveQuitButton.isHidden = false
+        quitButton.isEnabled = true
+        quitButton.isHidden = false
+        circleImage.isHidden = true
+        
+        deleteRegion()
+    }
     @IBAction func regionButton(_ sender: Any)
     {
         makeRegion()
@@ -179,16 +307,21 @@ class StartViewController:UIViewController{
         circleImage.isHidden = true
     }
     @IBAction func saveQuitButtonClicked(_ sender: Any) {
+        saveLocation()
+        goToBeginning()
+        addCustomPin()
+        saveTime()
+        
     }
     
-    
     @IBAction func quitButtonClicked(_ sender: Any) {
+        goToBeginning()
     }
     
     
     @IBAction func openButtonClicked(_ sender: Any) {
        
-        if (showMenu){
+        if (!showMenu){
             
             openButton.isEnabled = false
             openButton.isHidden = true
@@ -297,11 +430,32 @@ class StartViewController:UIViewController{
     func showAlert(title: String, message: String)
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(action)
+        let finishAction = UIAlertAction(title: "Finish", style: .default) { UIAlertAction in
+            self.goToSaveQuit()
+        }
+        let delayAction = UIAlertAction(title: "Delay", style: .default) { UIAlertAction in
+            self.Delay()
+        }
+        
+        alert.addAction(finishAction)
+        alert.addAction(delayAction)
         present(alert, animated: true, completion: nil)
     }
+    func Delay(){
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(Counter), userInfo: nil, repeats: true)
+    }
     
+    @objc func Counter(){
+        counter = counter+1
+        //300 sn
+        if counter > 6{
+            print("Time is over.")
+            showAlert(title: "Alert", message: "You Left the Region")
+            timer?.invalidate()
+        
+        }
+        
+    }
     func showNotification(title: String, message: String)
     {
         let content = UNMutableNotificationContent()
@@ -330,10 +484,11 @@ extension StartViewController: MKMapViewDelegate{
         if annotationView == nil{
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationView")
         }
+           
            annotationView?.image = UIImage(named: "ship")
            return annotationView
     }
-    
+   
 }
 
 extension StartViewController: CLLocationManagerDelegate {
@@ -350,10 +505,13 @@ extension StartViewController: CLLocationManagerDelegate {
  
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion)
     {
-        let title = "You Left the Region"
-        let message = "Say bye bye to all that cool stuff."
+        let title = "Alert"
+        let message = "You Left the Region"
         showAlert(title: title, message: message)
         showNotification(title: title, message: message)
+    }
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        timer?.invalidate()
     }
 }
 
